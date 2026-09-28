@@ -1,0 +1,6 @@
+Modelo,TP,FP,TN,FN,Total_Fraudes,Total_Legitimas
+Regresión Logística,1077,5622,58970,155,1232,64592
+Random Forest,1231,7,64585,1,1232,64592
+XGBoost,1231,24,64568,1,1232,64592
+Isolation Forest,285,512,64080,947,1232,64592
+Autoencoder,970,3243,61349,262,1232,64592

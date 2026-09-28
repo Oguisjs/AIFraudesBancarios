@@ -1,0 +1,26 @@
+# Entornos virtuales
+venv/
+env/
+.env
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Datos crudos y matrices binarias pesadas (PaySim supera los 100MB permitidos por GitHub)
+data/raw/
+data/processed/*.npy
+!data/processed/*.csv
+!data/*.csv
+
+# Modelos binarios pesados (Isolation Forest supera los 240MB)
+models/isolation_forest.pkl
+# Modelos ligeros de producción se pueden versionar o ignorar según preferencia
+# models/*.pkl
+# models/*.h5
+
+# Archivos de configuración de IDEs y SO
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,7 @@
+[pyrefly]
+python_interpreter = "C:\\Users\\oguis\\Desktop\\AIFraudesBancarios\\venv\\Scripts\\python.exe"
+
+[pyrefly.errors]
+# Silenciar errores de stubs faltantes para librerías de ML/DS
+missing-import = false
+import-untyped = false
