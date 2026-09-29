@@ -773,6 +773,8 @@ with tab3:
 
         if target_path.exists():
             try:
+                from PIL import Image
+                img = Image.open(target_path)
                 # Compatibilidad entre versiones de Streamlit (Streamlit >= 1.40 deprecó use_column_width)
                 import inspect
                 sig = inspect.signature(st.image)
