@@ -761,8 +761,9 @@ with tab3:
             filename = target_path.name
             candidatos = [
                 EVIDENCIA_DIR / filename,
-                NOTEBOOKS_DIR / filename,
+                ROOT_DIR / 'evidencia' / 'anexos_imagenes' / filename,
                 ROOT_DIR / 'evidencia' / filename,
+                NOTEBOOKS_DIR / filename,
                 ROOT_DIR / 'evidencia' / 'graficos_shap' / filename
             ]
             for cand in candidatos:
@@ -772,9 +773,15 @@ with tab3:
 
         if target_path.exists():
             try:
-                from PIL import Image
-                img = Image.open(target_path)
-                st.image(img, caption=caption, use_column_width=True)
+                # Compatibilidad entre versiones de Streamlit (Streamlit >= 1.40 deprecó use_column_width)
+                import inspect
+                sig = inspect.signature(st.image)
+                if 'use_container_width' in sig.parameters:
+                    st.image(img, caption=caption, use_container_width=True)
+                elif 'width' in sig.parameters and 'use_column_width' not in sig.parameters:
+                    st.image(img, caption=caption, width='stretch')
+                else:
+                    st.image(img, caption=caption, use_column_width=True)
             except Exception as e:
                 st.error(f"Error al abrir la imagen {target_path.name}: {str(e)}")
         else:
